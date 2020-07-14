@@ -184,7 +184,7 @@ func main() {
 	 *      the recipes.
 	 */
 
-	deletedRecipeNameList := [...]string{"elotes", "fried rice"}
+	deletedRecipeNameList := [...]string{"elote", "fried rice"}
 
 	var deleteQuery = bson.M{"name": bson.M{"$in": deletedRecipeNameList}}
 	deleteResult, err := collection.DeleteMany(context.TODO(), deleteQuery)
