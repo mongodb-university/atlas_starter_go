@@ -64,45 +64,29 @@ func main() {
 	 * insert them all in one call with InsertMany().
 	 */
 
-	eloteIngredients := make([]string, 0)
-	eloteIngredients = append(eloteIngredients, "corn")
-	eloteIngredients = append(eloteIngredients, "mayonnaise")
-	eloteIngredients = append(eloteIngredients, "cotija cheese")
-	eloteIngredients = append(eloteIngredients, "sour cream")
-	eloteIngredients = append(eloteIngredients, "lime")
+	eloteRecipe := Recipe{
+		Name:              "elote",
+		Ingredients:       []string{"corn", "mayonnaise", "cotija cheese", "sour cream", "lime"},
+		PrepTimeInMinutes: 35,
+	}
 
-	eloteRecipe := Recipe{"elote", eloteIngredients, 35}
+	locoMocoRecipe := Recipe{
+		Name:              "loco moco",
+		Ingredients:       []string{"ground beef", "butter", "onion", "egg", "bread bun", "mushrooms"},
+		PrepTimeInMinutes: 54,
+	}
 
-	locoMocoIngredients := make([]string, 0)
-	locoMocoIngredients = append(locoMocoIngredients, "ground beef")
-	locoMocoIngredients = append(locoMocoIngredients, "butter")
-	locoMocoIngredients = append(locoMocoIngredients, "onion")
-	locoMocoIngredients = append(locoMocoIngredients, "egg")
-	locoMocoIngredients = append(locoMocoIngredients, "bread bun")
-	locoMocoIngredients = append(locoMocoIngredients, "mushrooms")
+	patatasBravasRecipe := Recipe{
+		Name:              "patas bravas",
+		Ingredients:       []string{"potato", "tomato", "olive oil", "onion", "garlic", "paprika"},
+		PrepTimeInMinutes: 80,
+	}
 
-	locoMocoRecipe := Recipe{"loco moco", locoMocoIngredients, 54}
-
-	patatasBravasIngredients := make([]string, 0)
-	patatasBravasIngredients = append(patatasBravasIngredients, "potato")
-	patatasBravasIngredients = append(patatasBravasIngredients, "tomato")
-	patatasBravasIngredients = append(patatasBravasIngredients, "olive oil")
-	patatasBravasIngredients = append(patatasBravasIngredients, "onion")
-	patatasBravasIngredients = append(patatasBravasIngredients, "garlic")
-	patatasBravasIngredients = append(patatasBravasIngredients, "paprika")
-
-	patatasBravasRecipe := Recipe{"patas bravas", patatasBravasIngredients, 80}
-
-	friedRiceIngredients := make([]string, 0)
-	friedRiceIngredients = append(friedRiceIngredients, "rice")
-	friedRiceIngredients = append(friedRiceIngredients, "soy sauce")
-	friedRiceIngredients = append(friedRiceIngredients, "egg")
-	friedRiceIngredients = append(friedRiceIngredients, "onion")
-	friedRiceIngredients = append(friedRiceIngredients, "pea")
-	friedRiceIngredients = append(friedRiceIngredients, "carrot")
-	friedRiceIngredients = append(friedRiceIngredients, "sesame oil")
-
-	friedRiceRecipe := Recipe{"fried rice", friedRiceIngredients, 40}
+	friedRiceRecipe := Recipe{
+		Name:              "fried rice",
+		Ingredients:       []string{"rice", "soy sauce", "egg", "onion", "pea", "carrot", "sesame oil"},
+		PrepTimeInMinutes: 40,
+	}
 
 	// Create an interface of all the created recipes
 	recipes := []interface{}{eloteRecipe, locoMocoRecipe, patatasBravasRecipe, friedRiceRecipe}
