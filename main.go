@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"time"
 
@@ -162,13 +163,17 @@ func main() {
 		fmt.Println("Something went wrong trying to update one document:")
 		panic(myRes.Err())
 	}
-	doc := bson.M{}
-	decodeErr := myRes.Decode(&doc)
+
+	_recipe := Recipe{}
+	decodeErr := myRes.Decode(&_recipe)
 	if decodeErr != nil {
 		fmt.Println("Something went wrong trying to decode the document:")
 		panic(decodeErr)
 	}
-	fmt.Println("Here is the updated document:", doc)
+
+	// indent the Recipe output to cleanly print the document using json.MarshallIndent
+	updatedRecipe, _ := json.MarshalIndent(_recipe, "", "\t")
+	fmt.Println("The following document has been updated: \n", string(updatedRecipe))
 
 	/*      *** DELETE DOCUMENTS ***
 	 *
