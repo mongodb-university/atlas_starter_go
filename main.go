@@ -107,7 +107,9 @@ func main() {
 
 	var filter = bson.M{"prepTimeInMinutes": bson.M{"$lt": 45}}
 	options := options.Find()
-	options.SetSort(bson.D{{"name", 1}}) // Sort by `name` field ascending
+
+	// Sort by `name` field ascending
+	options.SetSort(bson.D{{"name", 1}})
 
 	cursor, err := collection.Find(context.TODO(), filter, options)
 	if err != nil {
