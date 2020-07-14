@@ -123,19 +123,15 @@ func main() {
 
 	// Loop through the returned recipes
 	for cursor.Next(ctx) {
-		// declare a result BSON object
-		var result bson.M
-		err := cursor.Decode(&result)
+		recipe := Recipe{}
+		err := cursor.Decode(&recipe)
+
 		// If there is a cursor.Decode error
 		if err != nil {
 			fmt.Println("cursor.Next() error:")
 			panic(err)
 		} else {
-			var name = result["name"].(string)
-			var ingredients = result["ingredients"]
-			var prepTimeInMinutes = result["prepTimeInMinutes"].(int32)
-
-			fmt.Println(name, "has the ingredients:", ingredients, "and takes", prepTimeInMinutes, "minutes to make")
+			fmt.Println(recipe.Name, "has", len(recipe.Ingredients), "ingredients, and takes", recipe.PrepTimeInMinutes, "minutes to make.")
 		}
 	}
 
