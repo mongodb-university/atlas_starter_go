@@ -49,7 +49,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Connected to MongoDB!")
+	fmt.Println("Connected to MongoDB!\n")
 
 	// Provide the name of the database and collection you want to use.
 	// If they don't already exist, the driver and Atlas will create them
@@ -97,7 +97,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println(len(insertManyResult.InsertedIDs), "documents successfully inserted.")
+	fmt.Println(len(insertManyResult.InsertedIDs), "documents successfully inserted.\n")
 
 	/*
 	 * *** FIND DOCUMENTS ***
@@ -133,7 +133,7 @@ func main() {
 			fmt.Println("cursor.Next() error:")
 			panic(err)
 		} else {
-			fmt.Println(recipe.Name, "has", len(recipe.Ingredients), "ingredients, and takes", recipe.PrepTimeInMinutes, "minutes to make.")
+			fmt.Println(recipe.Name, "has", len(recipe.Ingredients), "ingredients, and takes", recipe.PrepTimeInMinutes, "minutes to make.\n")
 		}
 	}
 
@@ -146,7 +146,7 @@ func main() {
 		fmt.Println("Something went wrong trying to find one document:")
 		panic(e)
 	}
-	fmt.Println("Found a document with the ingredient potato", result)
+	fmt.Println("Found a document with the ingredient potato", result, "\n")
 
 	/*
 	 * *** UPDATE A DOCUMENT ***
@@ -173,7 +173,7 @@ func main() {
 
 	// indent the Recipe output to cleanly print the document using json.MarshallIndent
 	updatedRecipe, _ := json.MarshalIndent(_recipe, "", "\t")
-	fmt.Println("The following document has been updated: \n", string(updatedRecipe))
+	fmt.Println("The following document has been updated: \n", string(updatedRecipe), "\n")
 
 	/*      *** DELETE DOCUMENTS ***
 	 *
