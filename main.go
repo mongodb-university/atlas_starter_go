@@ -179,7 +179,7 @@ func main() {
 	 */
 
 	deletedRecipeNameList := make([]string, 0)
-	deletedRecipeNameList = append(deletedRecipeNameList, "elotees")
+	deletedRecipeNameList = append(deletedRecipeNameList, "elotes")
 	deletedRecipeNameList = append(deletedRecipeNameList, "fried rice")
 
 	var deleteQuery = bson.M{"name": bson.M{"$in": deletedRecipeNameList}}
