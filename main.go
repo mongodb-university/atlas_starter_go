@@ -95,7 +95,7 @@ func main() {
 		fmt.Println("Something went wrong trying to insert the new documents:")
 		panic(err)
 	}
-	fmt.Println(insertManyResult.InsertedIDs, " documents successfully inserted.")
+	fmt.Println("the following documents were inserted:", insertManyResult.InsertedIDs)
 
 	/*
 	 * *** FIND DOCUMENTS ***
