@@ -44,7 +44,7 @@ func main() {
 	err = client.Ping(ctx, nil)
 
 	if err != nil {
-		fmt.Println("There was a problem connecting to your Atlas cluster. Check that the URI includes a validusername and password, and that your IP address has been whitelisted. Error: ")
+		fmt.Println("There was a problem connecting to your Atlas cluster. Check that the URI includes a valid username and password, and that your IP address has been added to the access list. Error: ")
 		panic(err)
 	}
 
