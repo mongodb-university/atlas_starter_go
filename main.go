@@ -117,6 +117,10 @@ func main() {
 		panic(err)
 	}
 
+	defer func() {
+		cursor.Close(context.Background())
+	}()
+
 	// Loop through the returned recipes
 	for cursor.Next(ctx) {
 		// declare a result BSON object
