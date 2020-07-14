@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -30,19 +29,21 @@ func main() {
 	var mongoUri = "<Your Atlas Connection String>"
 
 	// CONNECT TO YOUR ATLAS CLUSTER:
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	defer cancel()
 	client, err := mongo.Connect(ctx, options.Client().ApplyURI(
 		mongoUri,
 	))
 
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	err = client.Ping(ctx, nil)
 
 	if err != nil {
-		log.Fatal("There was a problem connecting to your Atlas cluster. Check that the URI includes a validusername and password, and that your IP address has been whitelisted. Error: ", err)
+		fmt.Println("There was a problem connecting to your Atlas cluster. Check that the URI includes a validusername and password, and that your IP address has been whitelisted. Error: ")
+		panic(err)
 	}
 
 	fmt.Println("Connected to MongoDB!")
@@ -105,7 +106,8 @@ func main() {
 	recipes := []interface{}{eloteRecipe, locoMocoRecipe, patatasBravasRecipe, friedRiceRecipe}
 	insertManyResult, err := collection.InsertMany(context.TODO(), recipes)
 	if err != nil {
-		log.Fatal("Something went wrong trying to insert the new documents: ", err)
+		fmt.Println("Something went wrong trying to insert the new documents:")
+		panic(err)
 	}
 	fmt.Println(insertManyResult.InsertedIDs, " documents successfully inserted.")
 
@@ -123,7 +125,8 @@ func main() {
 
 	cursor, err := collection.Find(context.TODO(), filter, options)
 	if err != nil {
-		log.Fatal("Something went wrong trying to find the documents: ", err)
+		fmt.Println("Something went wrong trying to find the documents:")
+		panic(err)
 	}
 
 	// Loop through the returned recipes
@@ -133,7 +136,8 @@ func main() {
 		err := cursor.Decode(&result)
 		// If there is a cursor.Decode error
 		if err != nil {
-			log.Fatal("cursor.Next() error:", err)
+			fmt.Println("cursor.Next() error:")
+			panic(err)
 		} else {
 			var name = result["name"].(string)
 			var ingredients = result["ingredients"]
@@ -149,7 +153,8 @@ func main() {
 	var myFilter = bson.D{{"name", "fried rice"}}
 	e := collection.FindOne(context.TODO(), myFilter).Decode(&result)
 	if e != nil {
-		log.Fatal("Something went wrong trying to find one document:", e)
+		fmt.Println("Something went wrong trying to find one document:")
+		panic(e)
 	}
 	fmt.Println("found a document with the name fried rice", result)
 
@@ -165,12 +170,14 @@ func main() {
 	var updateDoc = bson.D{{"$set", bson.D{{"prepTimeInMinutes", 72}}}}
 	var myRes = collection.FindOneAndUpdate(ctx, myFilter, updateDoc, nil)
 	if myRes.Err() != nil {
-		log.Fatal("Something went wrong trying to update one document:", myRes.Err())
+		fmt.Println("Something went wrong trying to update one document:")
+		panic(myRes.Err())
 	}
 	doc := bson.M{}
 	decodeErr := myRes.Decode(&doc)
 	if decodeErr != nil {
-		log.Fatal("Something went wrong trying to decode the document:", decodeErr)
+		fmt.Println("Something went wrong trying to decode the document:")
+		panic(decodeErr)
 	}
 	fmt.Println("Here is the updated document:", doc)
 
@@ -190,7 +197,7 @@ func main() {
 	var deleteQuery = bson.M{"name": bson.M{"$in": deletedRecipeNameList}}
 	deleteResult, err := collection.DeleteMany(context.TODO(), deleteQuery)
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 	fmt.Printf("Deleted %v documents in the recipes collection\n", deleteResult.DeletedCount)
 
