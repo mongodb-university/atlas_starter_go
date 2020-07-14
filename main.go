@@ -187,6 +187,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Deleted %v documents in the recipes collection\n", deleteResult.DeletedCount)
+	fmt.Println("Deleted", deleteResult.DeletedCount, "documents in the recipes collection\n")
 
 }
