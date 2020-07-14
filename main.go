@@ -77,7 +77,7 @@ func main() {
 	}
 
 	patatasBravasRecipe := Recipe{
-		Name:              "patas bravas",
+		Name:              "patatas bravas",
 		Ingredients:       []string{"potato", "tomato", "olive oil", "onion", "garlic", "paprika"},
 		PrepTimeInMinutes: 80,
 	}
