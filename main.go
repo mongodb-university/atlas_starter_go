@@ -35,9 +35,11 @@ func main() {
 		mongoUri,
 	))
 
-	if err != nil {
-		panic(err)
-	}
+	defer func() {
+		if err = client.Disconnect(ctx); err != nil {
+			panic(err)
+		}
+	}()
 
 	err = client.Ping(ctx, nil)
 
