@@ -126,7 +126,7 @@ func main() {
 		recipe := Recipe{}
 		err := cursor.Decode(&recipe)
 
-		// If there is a cursor.Decode error
+		// If there is an error decoding the cursor into a Recipe
 		if err != nil {
 			fmt.Println("cursor.Next() error:")
 			panic(err)
