@@ -29,7 +29,7 @@ this project as a ZIP archive,
 [unzip the archive](https://www.wikihow.com/Unzip-a-File) before proceeding.
 
 
-### 2. Install Depedencies
+### 2. Install Dependencies
 
 Navigate to the directory containing the project in your shell or open it
 in your preferred IDE.
