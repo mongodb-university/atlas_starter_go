@@ -139,7 +139,7 @@ func main() {
 	// We can also find a single document. Let's find the first document
 	// that has the string "fried rice" in the name.
 	var result Recipe
-	var myFilter = bson.D{{"name", "fried rice"}}
+	var myFilter = bson.D{{"ingredients", "potato"}}
 	e := collection.FindOne(context.TODO(), myFilter).Decode(&result)
 	if e != nil {
 		fmt.Println("Something went wrong trying to find one document:")
