@@ -145,7 +145,7 @@ func main() {
 		fmt.Println("Something went wrong trying to find one document:")
 		panic(e)
 	}
-	fmt.Println("found a document with the name fried rice", result)
+	fmt.Println("Found a document with the name fried rice", result)
 
 	/*
 	 * *** UPDATE A DOCUMENT ***
