@@ -72,8 +72,7 @@ contents of the `main.go` file.
 1. Click the Run icon, or from the Run menu, choose **Start Debugging**.
 
 Assuming you have the correct connection string, you have now connected 
-the Go app to your MongoDB Atlas datastore.
-Have fun modifying the code to experiment with the Go driver and MongoDB.
+the Go app to your MongoDB Atlas datastore. Have fun modifying the code to experiment with the Go driver and MongoDB.
 
 ## Troubleshooting
 
