@@ -53,8 +53,7 @@ go get -d
    documentation.
 
 ```go 
-    var mongoUri = 
-      "<Your Atlas Connection String>";
+	var mongoUri = "<Your Atlas Connection String>"
 ```
 
 ### 4. Run the Project
