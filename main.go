@@ -189,6 +189,7 @@ func main() {
 	var deleteQuery = bson.M{"name": bson.M{"$in": deletedRecipeNameList}}
 	deleteResult, err := collection.DeleteMany(context.TODO(), deleteQuery)
 	if err != nil {
+		fmt.Println("Something went wrong trying to delete documents:")
 		panic(err)
 	}
 	fmt.Println("Deleted", deleteResult.DeletedCount, "documents in the recipes collection\n")
