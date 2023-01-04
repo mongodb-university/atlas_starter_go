@@ -47,7 +47,7 @@ go get -d
    documentation.
 
 ```go
-	var mongoUri = "<Your Atlas Connection String>"
+var mongoUri = "<Your Atlas Connection String>"
 ```
 
 ### 4. Run the Project
@@ -57,7 +57,7 @@ following command:
 
 ```shell
 go run main.go
-``
+```
 Assuming you have the correct connection string, you have now connected
 the Go app to your MongoDB Atlas datastore. Have fun modifying the code to experiment with the Go driver and MongoDB.
 
@@ -68,4 +68,3 @@ Are you having trouble getting connected to your MongoDB Atlas instance? Double-
 1. Have you replaced the `mongoUri` variable with a valid connection string provided by the Atlas UI?
 
 2. Have you [added your current IP address to the access list](https://docs.atlas.mongodb.com/security-whitelist/) in the Atlas UI?
-```
